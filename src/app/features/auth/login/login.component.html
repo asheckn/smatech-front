@@ -1,0 +1,108 @@
+<section class="flex w-full md:h-[800px] h-full flex-wrap">
+  <div class="md:w-1/2 w-full md:p-10 p-5  flex flex-col  items-center justify-between">
+    <div class="text-center mb-10 md:mb-0">
+      <br>
+      <h1 class="text-6xl text-center font-bold max-w-2xl leading-relaxed">
+        The only place you can get quality desk ornaments
+      </h1>
+      <div class="py-10 flex flex-col items-center">
+        <div class="text-gray-500 text-sm p-2.5">Already have an account ?</div>
+        <div routerLink="/login" class="p-2.5 bg-accent-500 hover:bg-accent-700 rounded-lg p-2.5 w-40 text-white cursor-pointer" >Login</div>
+      </div>
+
+    </div>
+
+    <div class="h-80 hidden md:block rounded-xl w-full bg-cover bg-center relative overflow-hidden group" style="background-image: url('https://stratpack.blog/wp-content/uploads/2022/02/formula-1-models_0.png');">
+      <!-- Black Overlay -->
+      <div class="absolute inset-0 bg-black/50 bg-opacity-50 rounded-xl z-50"></div>
+
+      <!-- Text Content -->
+      <div class="absolute inset-0 flex items-center justify-center z-50">
+        <p class="text-white text-2xl font-semibold text-center px-4 italic font-light">
+          "Feel the thrill of speed , On your desk "
+        </p>
+      </div>
+
+      <!-- Zoom Effect on Hover -->
+      <div class="absolute hidden md:block  inset-0 bg-cover bg-center transition-transform duration-500 ease-in-out transform scale-100 group-hover:scale-110" style="background-image: url('/assets/images/login.jfif');"></div>
+    </div>
+
+
+  </div>
+  <div class="md:w-1/2 w-full flex items-center p-10">
+    <div class="rounded-xl border border-gray-300 h-full p-10 w-full flex items-center justify-center bg-cover relative" style="background-image: url('https://images.squarespace-cdn.com/content/v1/51bf5714e4b0a897bf54ae1d/1570923628362-45E9ZPT857OWD7ZBUZY6/rare+nasa+atlantis+shuttle+08.jpg');">
+      <div class="absolute inset-0  bg-opacity-50 rounded-xl"></div>
+
+      <!-- FORM START -->
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
+        class="absolute z-30 w-[50rem] bg-white rounded-xl p-5 items-center"
+      >
+        <h1 class="py-4 w-full text-center text-3xl">Login</h1>
+
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Email -->
+          <div class="pb-5 w-full">
+            <label class="text-gray-500" for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              class="w-full py-2 bg-gray-100 rounded-md p-2.5 transition border-gray-100 border focus:ring-0 focus:outline-none"
+              placeholder="Email"
+            />
+            <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-500 text-sm">
+              <div *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</div>
+              <div *ngIf="loginForm.get('email')?.errors?.['email']">Invalid email format</div>
+            </div>
+          </div>
+          <div class="pb-5 w-full">
+            <label class="text-gray-500" for="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              formControlName="password"
+              class="w-full py-2 bg-gray-100 rounded-md p-2.5 transition border-gray-100 border focus:ring-0 focus:outline-none"
+              placeholder="Password"
+            />
+            <div *ngIf="loginForm.get('password')?.touched" class="text-red-500 text-sm">
+              <div *ngIf="loginForm.get('password')?.errors?.['required']">
+                Password is required
+              </div>
+              <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                Minimum 8 characters
+              </div>
+              <div *ngIf="loginForm.get('password')?.errors?.['missingUppercase']">
+                At least one uppercase letter
+              </div>
+              <div *ngIf="loginForm.get('password')?.errors?.['missingSpecialChar']">
+                At least one special character
+              </div>
+              <div *ngIf="loginForm.get('password')?.errors?.['missingNumber']">
+                At least one number
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="text-red-500 text-sm mb-2 text-center">
+          {{ errorMessage }}
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid || isLoading"
+          class="bg-black p-2.5 rounded w-full my-5 hover:bg-gray-800 text-white disabled:bg-gray-400"
+        >
+          <span *ngIf="!isLoading">Login</span>
+          <span *ngIf="isLoading">Processing...</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
