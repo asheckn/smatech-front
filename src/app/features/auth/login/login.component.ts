@@ -89,26 +89,31 @@ export class LoginComponent implements OnInit {
         this.isLoading = false;
 
         //Todo Get Cart
-
-
-        ///Navigate to register page
-        Swal.fire({
-          icon: 'success',
-          title: 'Login Successful',
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 2000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
+        this.cartService.getCart().subscribe({
+          next: () => {
+            ///Navigate to register page
+            Swal.fire({
+              icon: 'success',
+              title: 'Login Successful',
+              toast: true,
+              position: "top-end",
+              showConfirmButton: false,
+              timer: 2000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+              }
+            }).then((result) => {
+              //navigate to login
+              this.router.navigateByUrl('/store').then(()=>{
+              })
+            })
           }
-        }).then((result) => {
-          //navigate to login
-          this.router.navigateByUrl('/store').then(()=>{
-          })
         })
+
+
+
 
 
 

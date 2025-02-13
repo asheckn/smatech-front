@@ -11,10 +11,10 @@
 
 <!--Shop Section-->
 <section class="flex flex-wrap gap-5 justify-center">
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
+  <ng-container *ngFor="let product of products">
+    <app-product-card [product]="product"></app-product-card>
+  </ng-container>
+
 </section>
 
 
@@ -157,7 +157,7 @@
 </section>
 
 <section class="text-center w-full flex justify-center items-center p-10">
-  <span class="text-2xl ">Reputable brands</span>
+  <span class="text-2xl text-gray-500 ">Our Partners</span>
 </section>
 
 <!--Brands Section-->

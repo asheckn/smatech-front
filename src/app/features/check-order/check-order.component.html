@@ -1,0 +1,135 @@
+
+<section class="flex items-center justify-center px-20 py-10">
+  <section *ngIf="!loading" class="max-w-screen-xl w-full grid grid-cols-4">
+    <div *ngIf="order?.orderStatus ==='PAID'" class="col-span-2 max-w-full mx-auto p-6 bg-white rounded-lg shadow-sm">
+      <div class="text-center mb-6">
+        <div class="text-4xl text-green-500 mb-4">✓</div>
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Order Confirmed!</h1>
+        <p class="text-lg text-gray-600">Thank you for your purchase!</p>
+      </div>
+
+      <div class="space-y-4 border-t pt-4">
+        <!-- Grid container for side-by-side layout -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Order Number with copy affordance -->
+          <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+            <div class="flex-1">
+              <div class="text-sm font-medium text-gray-500">Order Number</div>
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-gray-800">{{order?.orderCode}}</span>
+                <button class="text-blue-500 hover:text-blue-700"
+                        (click)="copyToClipboard(order?.orderCode)">
+                  📋
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Reference with copy affordance -->
+          <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+            <div class="flex-1">
+              <div class="text-sm font-medium text-gray-500">Payment Reference</div>
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-gray-800">{{payment?.paymentReference}}</span>
+                <button class="text-blue-500 hover:text-blue-700"
+                        (click)="copyToClipboard(payment?.paymentReference)">
+                  📋
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-6 text-sm text-gray-500 text-center">
+        A confirmation email has been sent to your inbox.
+      </p>
+    </div>
+    <div *ngIf="order?.orderStatus !='PAID'" class="col-span-2 max-w-full mx-auto p-6 bg-white rounded-lg shadow-sm border border-red-100">
+      <div class="text-center mb-6">
+        <!-- Changed to error icon and color -->
+        <div class="text-4xl text-red-500 mb-4">✕</div>
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Payment Failed!</h1>
+        <p class="text-lg text-red-600">The transaction could not be processed</p>
+      </div>
+
+      <div class="space-y-4 border-t pt-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Order Number -->
+          <div class="flex items-center gap-2 p-3 bg-red-50 rounded-lg">
+            <div class="flex-1">
+              <div class="text-sm font-medium text-red-600">Order Number</div>
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-gray-800">{{order?.orderCode}}</span>
+                <button class="text-red-500 hover:text-red-700"
+                        (click)="copyToClipboard(order?.orderCode)">
+                  📋
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Reference -->
+          <div class="flex items-center gap-2 p-3 bg-red-50 rounded-lg">
+            <div class="flex-1">
+              <div class="text-sm font-medium text-red-600">Payment Reference</div>
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-gray-800">{{payment?.paymentReference}}</span>
+                <button class="text-red-500 hover:text-red-700"
+                        (click)="copyToClipboard(payment?.paymentReference)">
+                  📋
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Changed footer message -->
+      <p class="mt-6 text-sm text-red-500 text-center">
+        Please check your payment details and try again.
+        <a href="#" class="underline hover:text-red-700">Contact support</a> if this persists.
+      </p>
+    </div>
+    <div class="col-span-2 p-5">
+      <div class="flex my-5 justify-between items-center">
+        <span class=" w-full font-semibold"> Order Summary</span>
+        <span class="font-bold"> {{order?.orderStatus}}</span>
+      </div>
+
+      <ul class="pt-5">
+        <li class="flex justify-between items-center py-1">
+          <span class="text-gray-500">Subtotal</span>
+          <span class="font-semibold">${{order?.subTotal | number: '1.2-2'}}</span>
+        </li>
+        <li class="flex justify-between items-center py-1">
+          <span class="text-gray-500">Shipping</span>
+          <span class="font-semibold">0.00</span>
+        </li>
+        <li class="flex justify-between items-center py-1">
+          <span class="text-gray-500">Vat</span>
+          <span class="font-semibold">${{order?.vatTotal | number: '1.2-2'}}</span>
+        </li>
+
+        <li class="flex justify-between items-center py-2">
+          <span class="text-gray-700 font-semibold">Total</span>
+          <span class="font-semibold">${{order?.orderTotal | number: '1.2-2'}}</span>
+        </li>
+      </ul>
+      <hr class="text-gray-200 my-3">
+
+      <div class="items-center flex flex-col">
+        @for (orderItem of order?.orderItems; track orderItem.id){
+          <app-order-item [orderItem]="orderItem"></app-order-item>
+        }
+      </div>
+      <!--      Items in the order-->
+
+
+
+    </div>
+  </section>
+  <section class="h-[40rem] flex items-center justify-center" *ngIf="loading">
+    Loading ...
+  </section>
+</section>

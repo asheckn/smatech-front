@@ -2,20 +2,20 @@
   <Section class="max-w-screen-xl w-full">
     <span class="text-xl">Our Categories</span>
     <div class="mt-5 flex gap-5">
-      <div class="flex items-center inline-flex  justify between rounded-full py-1 px-1 pr-3 gap-2 border border-gray-300">
-        <img class="rounded-full h-10 w-10" src="https://img.freepik.com/free-photo/view-3d-space-rocket-model_23-2151113333.jpg?t=st=1739390089~exp=1739393689~hmac=8386b76da7be59b8c5d4672b17ab8d1be4a80b4cc8d65b33cd7125922585bfbd&w=1380">
-        <span>Jeans</span>
+      <div *ngFor="let category of categories" class="flex items-center inline-flex  justify between rounded-full py-1 px-1 pr-3 gap-2 border border-gray-300">
+        <img class="rounded-full h-10 w-10" src="{{environment.storeUrl}}category/downloadImage/{{category.image}}">
+        <span>{{category.name}}</span>
       </div>
 
-      <div class="flex items-center inline-flex  justify between rounded-full py-1 px-1 pr-3 gap-2 border border-gray-300">
-        <img class="rounded-full h-10 w-10" src="https://img.freepik.com/free-photo/view-3d-space-rocket-model_23-2151113333.jpg?t=st=1739390089~exp=1739393689~hmac=8386b76da7be59b8c5d4672b17ab8d1be4a80b4cc8d65b33cd7125922585bfbd&w=1380">
-        <span>Jeans</span>
-      </div>
+<!--      <div class="flex items-center inline-flex  justify between rounded-full py-1 px-1 pr-3 gap-2 border border-gray-300">-->
+<!--        <img class="rounded-full h-10 w-10" src="https://img.freepik.com/free-photo/view-3d-space-rocket-model_23-2151113333.jpg?t=st=1739390089~exp=1739393689~hmac=8386b76da7be59b8c5d4672b17ab8d1be4a80b4cc8d65b33cd7125922585bfbd&w=1380">-->
+<!--        <span>Jeans</span>-->
+<!--      </div>-->
 
-      <div class="flex items-center inline-flex  justify between rounded-full py-1 px-1 pr-3 gap-2 border border-gray-300">
-        <img class="rounded-full h-10 w-10" src="https://img.freepik.com/free-photo/view-3d-space-rocket-model_23-2151113333.jpg?t=st=1739390089~exp=1739393689~hmac=8386b76da7be59b8c5d4672b17ab8d1be4a80b4cc8d65b33cd7125922585bfbd&w=1380">
-        <span>Jeans</span>
-      </div>
+<!--      <div class="flex items-center inline-flex  justify between rounded-full py-1 px-1 pr-3 gap-2 border border-gray-300">-->
+<!--        <img class="rounded-full h-10 w-10" src="https://img.freepik.com/free-photo/view-3d-space-rocket-model_23-2151113333.jpg?t=st=1739390089~exp=1739393689~hmac=8386b76da7be59b8c5d4672b17ab8d1be4a80b4cc8d65b33cd7125922585bfbd&w=1380">-->
+<!--        <span>Jeans</span>-->
+<!--      </div>-->
     </div>
 
     <!--  Filters-->
@@ -78,12 +78,10 @@
 
     <section class="flex flex-wrap gap-5 justify-start">
       <ng-container *ngFor="let product of products">
-        <app-product-card></app-product-card>
+        <app-product-card [product]="product" ></app-product-card>
       </ng-container>
 
     </section>
   </Section>
-
-
 </section>
 

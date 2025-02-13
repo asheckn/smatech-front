@@ -1,0 +1,33 @@
+
+<div class="rounded-xl flex md:min-h-28 h-full max-w-md bg-white shadow-sm border border-gray-300 hover:shadow-md transition-all duration-300 my-5 overflow-hidden group">
+  <!-- Image Section -->
+  <div class="md:w-1/4 w-full flex items-center justify-center p-3">
+    <div class="relative aspect-square w-full h-full overflow-hidden rounded-lg">
+      <img
+        src="{{environment.storeUrl}}category/downloadImage/{{orderItem.product.image}}"
+        (error)="'assets/images/woocommerce-placeholder.webp'"
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        alt="{{orderItem.product.name}}"
+      />
+      <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-300"></div>
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="md:w-3/4 w-full h-full p-4 relative">
+        <!-- Product Details -->
+    <h1 class="text-lg font-semibold text-gray-800 mb-1 pr-8">{{orderItem.product.name}} </h1>
+    <div class="text-sm text-gray-600 mb-3">{{orderItem.product.currencyCode}} {{orderItem.product.price | number: '1.2-2'}} </div>
+
+    <!-- Quantity Controls -->
+    <div class="absolute bottom-3 right-3 flex items-center space-x-2">
+      <span class="w-8 text-center text-gray-700">{{orderItem.quantity}}</span>
+    </div>
+
+    <!-- Total Price -->
+    <div class="text-lg  text-gray-900 pt-2">
+      Total: <span class="text-blue-600">{{orderItem.product.currencyCode}} {{orderItem.total | number: '1.2-2'}}</span>
+    </div>
+  </div>
+</div>
+

@@ -17,17 +17,21 @@ export class AuthService {
     // Load user from local storage on service init
 
     const storedUserJson = localStorage.getItem('user');
+    console.log("Getting user for local storage")
     if (storedUserJson) {
       try {
         const storedUser = JSON.parse(storedUserJson);
         if (storedUser) {
+          console.log(storedUser);
           this.userSubject.next(storedUser);
         }
       } catch (error) {
+        console.log("No user")
         console.error('Error parsing stored user:', error);
         this.userSubject.next(null);
       }
     } else {
+      console.log("No user")
       this.userSubject.next(null);
     }
 
@@ -39,6 +43,7 @@ export class AuthService {
   getUser(): AuthResponse | null {
     return this.userSubject.value;
   }
+
   //Register customer
   register(payload: any): any {
     return this.http.post(`${environment.authUrl}auth/register`, payload);
@@ -48,7 +53,7 @@ export class AuthService {
     return this.http.post<AuthResponse>(`${environment.authUrl}auth/authenticate`, payload).pipe(
       tap((response: AuthResponse) => {
         // Update cache values
-        localStorage.setItem('user', JSON.stringify(response.data));
+        localStorage.setItem('user', JSON.stringify(response));
         this.userSubject.next(response);
         localStorage.setItem('token', response.token);
       }),

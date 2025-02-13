@@ -15,10 +15,9 @@ export const environment = {
   // Production Secure
   baseUrl: 'http://localhost:8765/',
   authUrl: 'http://localhost:8765/auth/api/v1/',
-  // authUrl: 'http://localhost:8080/api/v1/',
   storeUrl: 'http://localhost:8765/store/api/v1/',
   paymentUrl: 'http://localhost:8765/payments/api/v1/',
 
-  returnUrl: 'http://localhost:4200/order/success/',
-  cancelUrl: 'http://localhost:4200/cancel/api/v1/',
+  returnUrl: 'http://localhost:4200/checkOrder/',
+  cancelUrl: 'http://localhost:4200/checkOrder/',
 }
