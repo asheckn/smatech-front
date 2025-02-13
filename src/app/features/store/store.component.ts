@@ -24,7 +24,7 @@ export class StoreComponent implements OnInit {
   searchQuery: any;
   activeItemGroup: any;
   itemGroups: any;
-  pageSize: any;
+  pageSize: any = 10;
   pageNumber: any;
   totalPages: any;
   products: Product[]= [];

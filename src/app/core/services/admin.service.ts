@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../environment/environment';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ApiResponse} from '../models';
+import {environment} from '../../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StoreService {
+export class AdminService {
 
   constructor(private http: HttpClient) { }
 
@@ -38,5 +38,11 @@ export class StoreService {
 
   getCategories():Observable<ApiResponse> {
     return this.http.get(`${environment.storeUrl}category/getCategories`) as Observable<ApiResponse>;
+  }
+
+  createProduct(queryParams: string, formData: FormData) {
+
+
+    return this.http.post(`${environment.storeUrl}product/create-product?${queryParams}`, formData);
   }
 }

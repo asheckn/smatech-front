@@ -37,14 +37,14 @@ export function AuthInterceptor(request: HttpRequest<unknown>, next: HttpHandler
         .set('Authorization','Bearer '+token)
         .set('Access-Control-Allow-Origin','*')
         .set('Accept', 'text/html, application/xhtml+xml, */*')
-      .set('Content-Type', 'application/json')
+      // .set('Content-Type', 'application/json')
     });
     return next(tokenizedReq);
   }
   let finalRequest = request.clone({headers: request.headers
       .set('Access-Control-Allow-Origin','*')
       .set('Accept', 'text/html, application/xhtml+xml, */*')
-      .set('Content-Type', 'application/json')
+      // .set('Content-Type', 'application/json')
   });
   console.log("NO TOKEN TO INJECTED");
   console.log("Request  Url ", finalRequest.url);

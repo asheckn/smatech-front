@@ -9,9 +9,14 @@ import {CartComponent} from './features/cart/cart.component';
 import {CheckoutComponent} from './features/checkout/checkout.component';
 import {ProfileComponent} from './features/profile/profile.component';
 import {OrdersComponent} from './features/orders/orders.component';
+import {OrdersComponent as AdminOrders}  from './features/admin/orders/orders.component';
 import {CheckOrderComponent} from './features/check-order/check-order.component';
 import {PaymentsComponent} from './features/payments/payments.component';
 import {ProfileDetailsComponent} from './features/profile/profile-details/profile-details.component';
+import {ProductsComponent} from './features/admin/products/products.component';
+import {CategoriesComponent} from './features/admin/categories/categories.component';
+import {CustomersComponent} from './features/admin/customers/customers.component';
+import {CreateProductComponent} from './features/admin/products/create-product/create-product.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -32,21 +37,13 @@ export const routes: Routes = [
   // {path: 'forgot-password', component: ForgotPasswordComponent},
   // {path: 'register', component: RegisterComponent},
   {path: 'admin', component: AdminLayoutComponent, children: [
-      // {path: '', redirectTo:'/profile/detail', pathMatch:"full"},
-      // {path: 'detail', component: ProfileDetailComponent},
-      // {path: 'invoice', component: ProfileInvoicesComponent},
-      // {path: 'statements', component: ProfileStatementsComponent},
-      // {path: 'payments', component: ProfileWalletIncomingPaymentsComponent},
-      // {path: 'wallet/fund', component: ProfileFundWalletComponent},
-      // {path: 'statement-detail', component: ProfileStatementDetailComponent},
-      // {path: 'invoice-detail', component: ProfileInvoiceDetailComponent},
-      // {path: 'security', component: ProfilePasswordsComponent},
-      // {path: 'pay-invoice', component: PayInvoiceComponent}
+      {path: '', redirectTo:'/admin/orders', pathMatch:"full"},
+      {path: 'orders', component: AdminOrders},
+      {path: 'products', component: ProductsComponent},
+      {path: 'products/create', component: CreateProductComponent},
+      {path: 'sales', component: PaymentsComponent},
+      {path: 'categories', component: CategoriesComponent},
+      {path: 'customers', component: CustomersComponent},
+      {path: 'users', component: CustomersComponent},
     ]},
-  // {path: 'checkout', component: CheckoutComponent},
-  // {path: 'product', component: ProductComponent},
-  // {path: 'cart', component: CartComponent},
-  // {path: 'about-us', component: AboutUsComponent},
-  // {path: 'contact-us', component: ContactUsComponent},
-  // { path: '**', component: PageNotFoundComponent },
 ];

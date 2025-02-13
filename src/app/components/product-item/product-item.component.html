@@ -1,0 +1,69 @@
+<tr class="bg-white hover:bg-gray-50">
+  <td class="size-px whitespace-nowrap align-top">
+    <div class="flex pl-5 size-[10rem] items-center justify-center">
+      <label class="cursor-pointer">
+        <input type="file" class="hidden" (change)="handleImageUpload($event)">
+        <img class="shrink-0 rounded" [src]="environment.storeUrl + 'category/downloadImage/' + editProduct.image" alt="Product Image">
+      </label>
+    </div>
+  </td>
+  <td class="size-px whitespace-nowrap align-top">
+    <div class="p-6">
+      <input type="text"
+             class="text-sm font-semibold text-gray-800 border rounded p-1 w-full"
+             [(ngModel)]="editProduct.name">
+      <select class="text-sm text-gray-500 border rounded p-1 mt-1 w-full"
+              [(ngModel)]="editProduct.category.id">
+        <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+      </select>
+    </div>
+  </td>
+  <td class="h-px w-72 min-w-72 align-top">
+    <div class="p-6">
+      <textarea class="text-sm font-semibold text-gray-800 border rounded p-1 w-full h-24"
+                [(ngModel)]="editProduct.description"></textarea>
+    </div>
+  </td>
+  <td class="size-px whitespace-nowrap align-top">
+    <div class="p-6 space-y-1">
+      <input type="number" step="0.01"
+             class="text-sm text-gray-600 border rounded p-1 w-full"
+             [(ngModel)]="editProduct.price">
+      <input type="number"
+             class="text-sm text-gray-600 border rounded p-1 w-full"
+             [(ngModel)]="editProduct.vatRate">
+      <input type="text"
+             class="text-sm text-gray-600 border rounded p-1 w-full"
+             [(ngModel)]="editProduct.currencyCode"
+             placeholder="Currency Code">
+    </div>
+  </td>
+  <td class="size-px whitespace-nowrap align-top">
+    <div class="p-6">
+      <input type="number"
+             class="text-sm text-gray-600 border rounded p-1 w-full"
+             [(ngModel)]="editProduct.stock">
+    </div>
+  </td>
+  <td class="size-px whitespace-nowrap align-top">
+    <div class="p-6">
+      <select class="w-full border rounded p-1 text-sm"
+              [(ngModel)]="editProduct.status">
+        <option value="ACTIVE">Active</option>
+        <option value="INACTIVE">Inactive</option>
+      </select>
+    </div>
+  </td>
+  <td class="size-px whitespace-nowrap align-top">
+    <div class="p-6 flex gap-2">
+      <button class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+              (click)="saveProduct()">
+        Save
+      </button>
+      <button class="px-3 py-1 bg-gray-300 rounded hover:bg-gray-400"
+              (click)="cancelEdit()">
+        Cancel
+      </button>
+    </div>
+  </td>
+</tr>
