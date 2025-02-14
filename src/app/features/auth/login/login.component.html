@@ -70,26 +70,14 @@
               <div *ngIf="loginForm.get('password')?.errors?.['required']">
                 Password is required
               </div>
-              <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
-                Minimum 8 characters
-              </div>
-              <div *ngIf="loginForm.get('password')?.errors?.['missingUppercase']">
-                At least one uppercase letter
-              </div>
-              <div *ngIf="loginForm.get('password')?.errors?.['missingSpecialChar']">
-                At least one special character
-              </div>
-              <div *ngIf="loginForm.get('password')?.errors?.['missingNumber']">
-                At least one number
-              </div>
             </div>
           </div>
         </div>
 
         <!-- Error Message -->
-        <div *ngIf="errorMessage" class="text-red-500 text-sm mb-2 text-center">
-          {{ errorMessage }}
-        </div>
+<!--        <div *ngIf="errorMessage" class="text-red-500 text-sm mb-2 text-center">-->
+<!--          {{ errorMessage }}-->
+<!--        </div>-->
 
         <!-- Submit Button -->
         <button

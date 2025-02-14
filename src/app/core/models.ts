@@ -144,6 +144,38 @@ export interface Order {
   cart:ShoppingCart;
 }
 
+// export interface PayPalOrderRequest {
+//   id: number;
+//   orderId: string;
+//   approveUrl: string;
+//   requestAmount: number;
+//   currency: string;
+//   orderCode: string;
+//   invoiceId: string;
+//   customId: string;
+//   description: string;
+//   createdAt: string;
+//   updatedAt: string;
+// }
+//
+// export interface Payment {
+//   id: number;
+//   paymentReference: string;
+//   paymentStatus: string// Adjust based on possible statuses
+//   paymentMethod: string // Extend if more methods exist
+//   customerId: number;
+//   orderCode: string;
+//   orderInvoiceNumber: string;
+//   currency: string;
+//   amount: number;
+//   paymentDescription: string;
+//   payPalOrderId: string;
+//   payPalOrderStatus: string // Adjust based on possible statuses
+//   payPalOrderRequest: PayPalOrderRequest;
+//   createdAt: string;
+//   updatedAt: string | null;
+// }
+
 export interface PayPalOrderRequest {
   id: number;
   orderId: string;
@@ -161,8 +193,8 @@ export interface PayPalOrderRequest {
 export interface Payment {
   id: number;
   paymentReference: string;
-  paymentStatus: string// Adjust based on possible statuses
-  paymentMethod: string // Extend if more methods exist
+  paymentStatus: string;
+  paymentMethod: string;
   customerId: number;
   orderCode: string;
   orderInvoiceNumber: string;
@@ -170,7 +202,7 @@ export interface Payment {
   amount: number;
   paymentDescription: string;
   payPalOrderId: string;
-  payPalOrderStatus: string // Adjust based on possible statuses
+  payPalOrderStatus: string;
   payPalOrderRequest: PayPalOrderRequest;
   createdAt: string;
   updatedAt: string | null;

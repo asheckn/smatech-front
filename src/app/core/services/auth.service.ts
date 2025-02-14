@@ -52,15 +52,21 @@ export class AuthService {
   login(payload: any): any {
     return this.http.post<AuthResponse>(`${environment.authUrl}auth/authenticate`, payload).pipe(
       tap((response: AuthResponse) => {
-        // Update cache values
-        localStorage.setItem('user', JSON.stringify(response));
-        this.userSubject.next(response);
-        localStorage.setItem('token', response.token);
+        if(response.data.isActive){
+          // Update cache values
+          localStorage.setItem('user', JSON.stringify(response));
+          this.userSubject.next(response);
+          localStorage.setItem('token', response.token);
+        }else {
+         throw Error;
+        }
+
       }),
-      catchError((error: any) => {
-        console.error("Error fetching store items:", error);
-        return throwError(error);
-      })
+      // catchError((error: any) => {
+      //   console.error("Error fetching store items:", error);
+      //
+      //   return throwError(error);
+      // })
     );
   }
 

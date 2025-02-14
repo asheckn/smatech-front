@@ -5,13 +5,15 @@ import {CommonModule, NgForOf} from '@angular/common';
 import {StoreService} from '../../core/services/store.service';
 import {ApiResponse, Category, Product} from '../../core/models';
 import {environment} from '../../../environment/environment';
+import {HeroComponent} from '../../components/hero/hero.component';
 
 @Component({
   selector: 'app-store',
   imports: [
     FormsModule,
     ProductCardComponent,
-    CommonModule
+    CommonModule,
+    HeroComponent
   ],
   templateUrl: './store.component.html',
   styleUrl: './store.component.css',

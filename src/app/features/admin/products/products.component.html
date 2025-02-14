@@ -96,7 +96,7 @@
                       </div>
                   </td>
                   <td class="size-px whitespace-nowrap align-top">
-                    <a class="block p-6" href="#">
+                    <a class="block p-6" >
                       <div class="flex items-center gap-x-3">
                         <div class="grow">
                           <span class="block text-sm font-semibold text-gray-800">{{ product.name }}</span>
@@ -106,19 +106,19 @@
                     </a>
                   </td>
                   <td class="h-px w-72 min-w-72 align-top">
-                    <a class="block p-6" href="#">
+                    <a class="block p-6" >
                       <span class="block text-sm font-semibold text-gray-800">{{product.description}}</span>
 <!--                      <span class="block text-sm text-gray-500">I bought this hat for my boyfriend, but then i found out he cheated on me so I kept it and I love it!! I wear it all the time and there is no problem with the fit even though its a mens" hat.</span>-->
                     </a>
                   </td>
                   <td class="size-px whitespace-nowrap align-top">
-                    <a class="block p-6" href="#">
+                    <a class="block p-6" >
                       <span class="block text-sm text-gray-600">$ {{ product.price  | number:'1.2-2'}}</span>
                       <span class="block text-sm text-gray-600">{{ product.vatRate}}%</span>
                     </a>
                   </td>
                   <td class="size-px whitespace-nowrap align-top">
-                    <a class="block p-6" href="#">
+                    <a class="block p-6" >
                       <span class="text-sm text-gray-600">{{ product.stock }}</span>
                     </a>
                   </td>
@@ -131,7 +131,7 @@
                       {{ product.status }}
                     </span>
                     </a>
-                    <a *ngIf="product.status === 'INACTIVE'" class="block p-6" href="#">
+                    <a *ngIf="product.status === 'INACTIVE'" class="block p-6">
         <span class="py-1 px-1.5 inline-flex items-center gap-x-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full">
             <svg class="size-2.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -152,16 +152,7 @@
 
           <!-- Footer -->
           <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200">
-            <div class="max-w-sm space-y-3">
-              <select class="py-2 px-3 pe-9 block border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option selected>5</option>
-                <option>6</option>
-              </select>
-            </div>
+
 
             <div>
               <div class="inline-flex gap-x-2">

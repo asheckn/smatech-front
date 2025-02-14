@@ -17,33 +17,35 @@ import {ProductsComponent} from './features/admin/products/products.component';
 import {CategoriesComponent} from './features/admin/categories/categories.component';
 import {CustomersComponent} from './features/admin/customers/customers.component';
 import {CreateProductComponent} from './features/admin/products/create-product/create-product.component';
+import {UsersComponent} from './features/admin/users/users.component';
+import {OrderDetailComponent} from './features/admin/orders/order-detail/order-detail.component';
+import {AuthAdminGuard} from './core/guards/auth-admin.guard';
 
 export const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/store', pathMatch: 'full'},
   {path: 'store', component: StoreComponent},
   {path: 'home', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'cart', component: CartComponent},
-  {path: 'checkout', component: CheckoutComponent},
-  {path: 'checkOrder', component: CheckOrderComponent},
-  {path: 'account', component: ProfileComponent, children: [
+  {path: 'cart', component: CartComponent ,canActivate:[authGuard],},
+  {path: 'checkout', component: CheckoutComponent ,canActivate:[authGuard],},
+  {path: 'checkOrder', component: CheckOrderComponent,canActivate:[authGuard],},
+  {path: 'account',  component: ProfileComponent,canActivate:[authGuard], children: [
       {path: '', component: OrdersComponent},
       {path: 'profile', component: ProfileDetailsComponent},
       {path: 'orders', component: OrdersComponent},
       {path: 'payments', component: PaymentsComponent},
     ]},
-
-  // {path: 'forgot-password', component: ForgotPasswordComponent},
-  // {path: 'register', component: RegisterComponent},
-  {path: 'admin', component: AdminLayoutComponent, children: [
+  {path: 'admin', component: AdminLayoutComponent,canActivate:[AuthAdminGuard], children: [
       {path: '', redirectTo:'/admin/orders', pathMatch:"full"},
       {path: 'orders', component: AdminOrders},
+      {path: 'orders/view', component: OrderDetailComponent},
       {path: 'products', component: ProductsComponent},
       {path: 'products/create', component: CreateProductComponent},
       {path: 'sales', component: PaymentsComponent},
       {path: 'categories', component: CategoriesComponent},
       {path: 'customers', component: CustomersComponent},
-      {path: 'users', component: CustomersComponent},
+      {path: 'users', component: UsersComponent},
+
     ]},
 ];

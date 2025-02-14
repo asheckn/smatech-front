@@ -27,7 +27,8 @@
           <span class="font-semibold">${{cart?.total | number: '1.2-2'}}</span>
         </li>
       </ul>
-      <button (click)="checkout()" class="w-full p-2.5 bg-blue-500 text-white rounded-lg my-2 hover:bg-blue-700 transition-colors">
+
+      <button *ngIf="cart?.total! > 0 " (click)="checkout()" class="w-full p-2.5 bg-blue-500 text-white rounded-lg my-2 hover:bg-blue-700 transition-colors">
         Checkout
       </button>
     </div>

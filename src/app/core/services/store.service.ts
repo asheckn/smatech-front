@@ -23,13 +23,13 @@ export class StoreService {
       params["name"] = name;
     }
     if(categoryId){
-      params["name"] = categoryId;
+      params["categoryId"] = categoryId;
     }
     if(price){
-      params["name"] = price;
+      params["price"] = price;
     }
     if(status){
-      params["name"] = status;
+      params["status"] = status;
     }
 
 

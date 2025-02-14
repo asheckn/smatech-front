@@ -35,8 +35,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', [
-          Validators.required,
-          this.passwordValidator
+          Validators.required
         ]],}
     );
   }
@@ -98,7 +97,7 @@ export class LoginComponent implements OnInit {
               toast: true,
               position: "top-end",
               showConfirmButton: false,
-              timer: 2000,
+              timer: 1000,
               timerProgressBar: true,
               didOpen: (toast) => {
                 toast.onmouseenter = Swal.stopTimer;
@@ -109,6 +108,13 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl('/store').then(()=>{
               })
             })
+          },
+          error: err => {
+              Swal.fire({
+                icon: 'error',
+                title: 'Login Failed',
+                text: err.message,
+              })
           }
         })
 
@@ -120,7 +126,12 @@ export class LoginComponent implements OnInit {
       },
       error: (error:any) => {
         this.isLoading = false;
-        // this.errorMessage = 'Could not register account. Please try again.';
+        this.errorMessage = 'Could not login account. Please try again.';
+          Swal.fire({
+            icon: 'error',
+            title: 'Incorrect username or password',
+            text: error.error.message,
+          })
         this.errorMessage = `${error.error.message}`;
       }
     });

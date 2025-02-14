@@ -1,10 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Product} from '../../core/models';
+import {ApiResponse, AuthResponse, Product, UserData} from '../../core/models';
 import {CommonModule, DecimalPipe, NgIf} from '@angular/common';
 import {environment} from '../../../environment/environment';
 import {StoreService} from '../../core/services/store.service';
 import {CartService} from '../../core/services/cart.service';
 import Swal from 'sweetalert2';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-product-card',
@@ -17,14 +18,23 @@ import Swal from 'sweetalert2';
   styleUrl: './product-card.component.css',
   standalone: true
 })
-export class ProductCardComponent  {
+export class ProductCardComponent implements OnInit {
 
   @Input({required:true})
   product!: Product;
   stockThreshold: number  = 5
+  user: UserData | null = null;
 
-  constructor(private cartService:CartService) {
+  constructor(private cartService:CartService, private authService: AuthService) {
 
+  }
+
+  ngOnInit() {
+    this.authService.user$.subscribe({
+      next: (response:any)=> {
+          this.user = response.data
+      }
+    })
   }
 
   protected readonly environment = environment;

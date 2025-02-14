@@ -68,4 +68,8 @@ export class OrderService {
     );
 
   }
+
+  getPayments(customerId:number) {
+    return this.http.get(`${environment.paymentUrl}payments/get-payment-by-customerId/${customerId}`)
+  }
 }
