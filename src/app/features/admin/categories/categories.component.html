@@ -69,7 +69,7 @@
 
               @for (category of categories; track  category.id){
                 <tr class="bg-white hover:bg-gray-50">
-                  <td class="size-px whitespace-nowrap align-top">
+                  <td class="size-px whitespace-nowrap align-top overflow-hidden">
                     <div class="flex pl-5 size-[10rem] items-center justify-center ">
                       <img class="shrink-0 rounded " src="{{environment.storeUrl}}category/downloadImage/{{category.image}}" alt="Product Image">
                     </div>
@@ -112,16 +112,7 @@
 
           <!-- Footer -->
           <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200">
-            <div class="max-w-sm space-y-3">
-              <select class="py-2 px-3 pe-9 block border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option selected>5</option>
-                <option>6</option>
-              </select>
-            </div>
+
 
             <div>
               <div class="inline-flex gap-x-2">

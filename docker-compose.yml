@@ -4,6 +4,7 @@ networks:
 
 services:
   frontend:
+    image: smatech-front-frontend:latest
     build: .
     ports:
       - "80:80"
